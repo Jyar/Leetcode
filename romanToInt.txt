@@ -1,0 +1,50 @@
+class Solution {
+    public int romanToInt(String s) {
+       int p = 0;
+        int index = 0;
+        int number = 0;
+        while ( p < s.length()){
+            if (s.charAt(p) == 'X'){
+               for (int i = p; i < s.length(); i++){
+                    if (s.charAt(i)== 'C' || s.charAt(i)== 'D' || s.charAt(i)== 'L'){
+                        number -= 20;
+                        break;
+                    } 
+                }
+                number += 10;
+            }
+             if (s.charAt(p) == 'V'){
+                number += 5;
+            }
+            if (s.charAt(p) == 'I'){
+                for (int i = p; i < s.length(); i++){
+                    if (s.charAt(i)== 'V' || s.charAt(i)== 'X'){
+                        number -= 2;
+                        break;
+                    } 
+                }
+                number += 1;
+            }
+              if (s.charAt(p) == 'L'){
+                number += 50;
+            }
+              if (s.charAt(p) == 'C'){
+                for (int i = p; i < s.length(); i++){
+                    if (s.charAt(i)== 'M' || s.charAt(i)== 'D'){
+                        number -= 200;
+                        break;
+                    }
+                }
+                  number += 100;
+            }
+              if (s.charAt(p) == 'D'){
+                number += 500;
+            }
+              if (s.charAt(p) == 'M'){
+                number += 1000;
+            }
+            p++;
+        }
+        return number;
+    }
+}
